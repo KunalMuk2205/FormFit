@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+env/
+.env
+.venv
+
+# Database (contains user data — do not commit)
+*.db
+*.sqlite3
+
+# Node
+node_modules/
+
+# React build output
+/build
+
+# Logs and debug files
+*.log
+output.txt
+
+# Dev/test scripts (not part of the app)
+test.ps1
+test.py
+test_auth2.py
+check_db.py
+
+# Ghost directory artifact
+{src/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
