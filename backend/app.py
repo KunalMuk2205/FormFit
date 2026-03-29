@@ -15,6 +15,9 @@ from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from backend.extensions import db
 from backend.routes.exercise_routes import bp as exercise_bp
@@ -44,7 +47,7 @@ def create_app():
     logging.getLogger("mediapipe").setLevel(logging.WARNING)
 
     app = Flask(__name__)
-    CORS(app)
+    CORS(app) # In a strictly production environment, you would specify the Vercel domain here.
     
     # Configure the SQLite database
     # This creates a file 'formfit.db' relative to the app instance directory
@@ -53,7 +56,7 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     
     # Configure JWT
-    app.config["JWT_SECRET_KEY"] = "formfit-super-secret-key-for-local-dev-only"  # In prod, use environment variable
+    app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY", "formfit-dev-fallback-key")
     jwt = JWTManager(app)
     
     db.init_app(app)

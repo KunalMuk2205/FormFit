@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../config';
 import './AuthPage.css';
 
 export default function AuthPage() {
@@ -46,7 +47,7 @@ export default function AuthPage() {
            localStorage.removeItem('pending_save');
            
            // Fire the save request to the protected endpoint instantly
-           await fetch('/api/history/save', {
+           await fetch(`${API_BASE_URL}/api/history/save`, {
              method: 'POST',
              headers: { 
                'Content-Type': 'application/json',

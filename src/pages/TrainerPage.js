@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import SessionSummary from '../components/SessionSummary';
+import { API_BASE_URL } from '../config';
 import './TrainerPage.css';
 
 const EXERCISE_INFO = {
@@ -134,7 +135,7 @@ export default function TrainerPage() {
     const poll = async () => {
       if (!isSubscribed) return;
       try {
-        const res = await fetch(`/api/data/${exerciseId}`, {
+        const res = await fetch(`${API_BASE_URL}/api/data/${exerciseId}`, {
           signal: abortController.signal
         });
         if (res.ok && isSubscribed) {
@@ -165,7 +166,7 @@ export default function TrainerPage() {
       abortController.abort();
       clearTimeout(pollRef.current);
       clearInterval(timerRef.current);
-      fetch('/api/stop', { method: 'POST' }).catch(() => {});
+      fetch(`${API_BASE_URL}/api/stop`, { method: 'POST' }).catch(() => {});
       
       // Prevent ghost speech if the user navigates away mid-sentence
       window.speechSynthesis.cancel();
@@ -216,7 +217,7 @@ export default function TrainerPage() {
   const handleHardReset = async () => {
     setShowResetConfirm(false);
     setShowSummary(false); // Clear if resetting from completed Modal
-    await fetch(`/api/reset/${exerciseId}`, { method: 'POST' });
+    await fetch(`${API_BASE_URL}/api/reset/${exerciseId}`, { method: 'POST' });
     setElapsed(0); 
     setSessionStart(Date.now());
     setMistakesList([]);
@@ -242,7 +243,7 @@ export default function TrainerPage() {
 
     setIsSaving(true);
     try {
-      await fetch('/api/history/save', {
+      await fetch(`${API_BASE_URL}/api/history/save`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -250,7 +251,7 @@ export default function TrainerPage() {
         },
         body: JSON.stringify(payload)
       });
-      await fetch(`/api/reset/${exerciseId}`, { method: 'POST' });
+      await fetch(`${API_BASE_URL}/api/reset/${exerciseId}`, { method: 'POST' });
       navigate('/history');
     } catch (e) {
       console.error(e);
@@ -364,7 +365,7 @@ export default function TrainerPage() {
         <div className="camera-panel">
           <div className="camera-frame">
             <img
-              src={`/api/video/${exerciseId}`}
+              src={`${API_BASE_URL}/api/video/${exerciseId}`}
               alt="Live camera feed"
               className="camera-feed"
               onError={() => setIsConnected(false)}

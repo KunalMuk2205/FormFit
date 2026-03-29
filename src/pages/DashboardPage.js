@@ -5,6 +5,7 @@ import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, Legend
 } from 'recharts';
+import { API_BASE_URL } from '../config';
 import './DashboardPage.css';
 
 const EXERCISE_COLORS = {
@@ -36,7 +37,7 @@ export default function DashboardPage() {
 
     async function fetchDashboardData() {
       try {
-        const res = await fetch('/api/history/', {
+        const res = await fetch(`${API_BASE_URL}/api/history/`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

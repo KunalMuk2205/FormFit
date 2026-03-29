@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../config';
 import './HistoryPage.css';
 
 const EXERCISE_COLORS = {
@@ -31,7 +32,7 @@ export default function HistoryPage() {
 
     async function fetchHistory() {
       try {
-        const res = await fetch('/api/history/', {
+        const res = await fetch(`${API_BASE_URL}/api/history/`, {
           headers: { 'Authorization': `Bearer ${token}` },
           cache: 'no-store'
         });
