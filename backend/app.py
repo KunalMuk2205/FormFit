@@ -65,6 +65,12 @@ def create_app():
     app.register_blueprint(history_bp)
     app.register_blueprint(auth_bp)
     
+    # Health check endpoint for Render.com
+    @app.route("/health")
+    def health():
+        from flask import jsonify
+        return jsonify({"status": "ok"}), 200
+    
     # Ensure tables exist 
     with app.app_context():
         db.create_all()
@@ -72,5 +78,9 @@ def create_app():
     return app
 
 
+# Expose app at module level so gunicorn can find it via "app:create_app()"
+app = create_app()
+
 if __name__ == "__main__":
-    create_app().run(debug=True, host="0.0.0.0", port=5000, threaded=True)
+    app.run(debug=False, host="0.0.0.0", port=5000, threaded=True)
+
