@@ -7,7 +7,7 @@ import logging
 
 from flask import Blueprint, Response, jsonify
 
-from backend.state.exercise_state import (
+from state.exercise_state import (
     exercise_states,
     generate_frames,
     reset_exercise,
