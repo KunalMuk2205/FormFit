@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-from backend.extensions import db
+from extensions import db
 
 class WorkoutSession(db.Model):
     __tablename__ = 'workout_sessions'
