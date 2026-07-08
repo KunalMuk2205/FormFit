@@ -22,7 +22,7 @@ load_dotenv()
 from extensions import db
 from routes.exercise_routes import bp as exercise_bp
 from routes.history_routes import bp as history_bp
-from auth_routes import bp as auth_bp  # Make sure the folder path matches where auth_routes is located
+from routes.auth_routes import bp as auth_bp  # Make sure the folder path matches where auth_routes is located
 
 # Import models so SQLAlchemy knows about them before create_all()
 from models.user import User
