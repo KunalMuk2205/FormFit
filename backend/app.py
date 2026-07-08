@@ -19,14 +19,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from backend.extensions import db
-from backend.routes.exercise_routes import bp as exercise_bp
-from backend.routes.history_routes import bp as history_bp
-from backend.routes.auth_routes import bp as auth_bp
+from extensions import db
+from routes.exercise_routes import bp as exercise_bp
+from routes.history_routes import bp as history_bp
+from auth_routes import bp as auth_bp  # Make sure the folder path matches where auth_routes is located
 
 # Import models so SQLAlchemy knows about them before create_all()
-from backend.models.user import User
-from backend.models.workout import WorkoutSession, ExerciseResult
+from models.user import User
+from models.workout import WorkoutSession, ExerciseResult
 
 
 
