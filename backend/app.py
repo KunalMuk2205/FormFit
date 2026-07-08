@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from extensions import db
+from backend.extensions import db
 from backend.routes.exercise_routes import bp as exercise_bp
 from backend.routes.history_routes import bp as history_bp
 from backend.routes.auth_routes import bp as auth_bp
