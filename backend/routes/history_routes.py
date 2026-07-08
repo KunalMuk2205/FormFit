@@ -1,9 +1,9 @@
 import logging
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from backend.extensions import db
-from backend.models.user import User
-from backend.models.workout import WorkoutSession, ExerciseResult
+from extensions import db
+from models.user import User
+from models.workout import WorkoutSession, ExerciseResult
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
