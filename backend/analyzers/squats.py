@@ -11,10 +11,10 @@ import pickle
 
 import mediapipe as mp
 
-from backend.utils.angles    import calculate_angle
-from backend.utils.landmarks import get_landmark
-from backend.utils.feedback  import visibility_hint
-from backend.utils.dataset_logger import log_rep_features
+from utils.angles    import calculate_angle
+from utils.landmarks import get_landmark
+from utils.feedback  import visibility_hint
+from utils.dataset_logger import log_rep_features
 
 mp_pose = mp.solutions.pose
 logger  = logging.getLogger(__name__)
