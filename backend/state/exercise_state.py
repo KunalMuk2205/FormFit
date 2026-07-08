@@ -12,8 +12,8 @@ import threading
 import cv2
 import mediapipe as mp
 
-from backend.analyzers       import ANALYZERS
-from backend.utils.drawing   import draw_ui_overlay
+from analyzers       import ANALYZERS
+from utils.drawing   import draw_ui_overlay
 
 mp_pose    = mp.solutions.pose
 mp_drawing = mp.solutions.drawing_utils
