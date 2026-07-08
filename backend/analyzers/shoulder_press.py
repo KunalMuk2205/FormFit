@@ -7,9 +7,9 @@ import logging
 
 import mediapipe as mp
 
-from backend.utils.angles    import calculate_angle
-from backend.utils.landmarks import get_landmark
-from backend.utils.feedback  import visibility_hint
+from utils.angles    import calculate_angle
+from utils.landmarks import get_landmark
+from utils.feedback  import visibility_hint
 
 mp_pose = mp.solutions.pose
 logger  = logging.getLogger(__name__)
